@@ -18,7 +18,7 @@ export function destructDateUTC(date: Date = new Date()) {
   };
 }
 
-export function destructDate(date: Date = new Date()){
+export function destructDate(date: Date = new Date()) {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
