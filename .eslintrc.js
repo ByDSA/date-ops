@@ -32,6 +32,11 @@ module.exports = {
       },
     ],
     curly: ["error", "multi-or-nest"],
+    eqeqeq: "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
     "no-plusplus": ["off"],
     "import/no-cycle": [
       "error",
@@ -58,7 +63,7 @@ module.exports = {
         ImportDeclaration: "never",
         ExportDeclaration: {
           multiline: true,
-          minProperties: 2,
+          minProperties: 1,
         },
         ObjectExpression: "always",
         ObjectPattern: "never",
@@ -70,6 +75,7 @@ module.exports = {
         allowAllPropertiesOnSameLine: false,
       },
     ],
+    "comma-dangle": ["error", "always-multiline"],
     quotes: ["error", "double"],
     "padding-line-between-statements": [
       "error",
