@@ -1,7 +1,7 @@
 {
   "name": "date-ops",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "Advanced and simple operations with dates",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
