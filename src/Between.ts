@@ -1,46 +1,16 @@
+import { DateTime, Interval } from "luxon";
 import TimeUnit from "./TimeUnit";
-import { millisTo, utcToLocal } from "./TimeUtils";
 
-export function millisBetween(start: Date, end: Date) {
-  const timeStartDate = utcToLocal(start).getTime();
-  const timeEndDate = utcToLocal(end).getTime();
+export function millisBetween(start: DateTime, end: DateTime): number {
+  const interval = Interval.fromDateTimes(start, end);
+  const { milliseconds } = interval.toDuration(TimeUnit.MILLISECONDS);
 
-  return (timeEndDate - timeStartDate);
+  return milliseconds;
 }
 
-export function daysBetween(startDate: Date, endDate: Date): number {
-  const msDiff = millisBetween(startDate, endDate);
+export function daysBetween(start: DateTime, end: DateTime): number {
+  const interval = Interval.fromDateTimes(start, end);
+  const { days } = interval.toDuration(TimeUnit.DAYS);
 
-  return millisTo(msDiff, TimeUnit.DAYS).quotient;
-}
-
-type BetweenParams = {
-  start?: Date;
-  end?: Date;
-  units?: TimeUnit[];
-}
-
-export function between( { start = new Date(),
-  end = new Date(),
-  units }: BetweenParams) {
-  let unitsFixed;
-
-  if (!units || units.length === 0)
-    unitsFixed = [TimeUnit.DAYS];
-  else
-    unitsFixed = units;
-
-  unitsFixed.sort((a, b) => b - a);
-
-  let ms = millisBetween(start, end);
-  const ret = Array(TimeUnit.DAYS + 1);
-
-  unitsFixed.forEach((u) => {
-    const { quotient, remainder } = millisTo(ms, u);
-
-    ms = remainder;
-    ret[u] = quotient;
-  } );
-
-  return ret;
+  return Math.floor(days);
 }

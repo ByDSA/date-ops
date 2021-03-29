@@ -7,5 +7,5 @@ it("day enum", () => {
   expect(WeekDay.THURSDAY).toBe(4);
   expect(WeekDay.FRIDAY).toBe(5);
   expect(WeekDay.SATURDAY).toBe(6);
-  expect(WeekDay.SUNDAY).toBe(0);
+  expect(WeekDay.SUNDAY).toBe(7);
 } );

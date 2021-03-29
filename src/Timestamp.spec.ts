@@ -1,11 +1,20 @@
-import Month from "./Month";
-import { getTimestamp, getTimestampNow } from "./Timestamp";
+import { DateTime } from "luxon";
+import MonthJS from "./MonthJS";
+import { getTimestamp, getTimestampJS, getTimestampNow } from "./Timestamp";
 
-const testDate = new Date(1993, Month.MAY, 21, 8, 34, 0);
+const testDate = new Date(1993, MonthJS.MAY, 21, 8, 34, 0);
+const testDateTime = DateTime.fromJSDate(testDate);
+
+it("getTimestampJS", () => {
+  const actual = getTimestampJS(testDate);
+  const expected = "19930521T083400";
+
+  expect(actual).toBe(expected);
+} );
 
 it("getTimestamp", () => {
-  const actual = getTimestamp(testDate);
-  const expected = "19930521083400";
+  const actual = getTimestamp(testDateTime);
+  const expected = "19930521T083400";
 
   expect(actual).toBe(expected);
 } );
