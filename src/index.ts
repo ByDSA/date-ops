@@ -1,4 +1,8 @@
 export {
+  between, daysBetween,
+  millisBetween,
+} from "./Between";
+export {
   destructDate,
   destructDateUTC,
 } from "./DestructDate";
@@ -10,7 +14,9 @@ export {
   getTimestampNow,
 } from "./Timestamp";
 export {
-  daysBetween,
+  default as TimeUnit,
+} from "./TimeUnit";
+export {
   utcToLocal,
 } from "./TimeUtils";
 export {
