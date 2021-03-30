@@ -4,6 +4,10 @@ export {
 } from "./Between";
 
 export {
+  default as Calendar,
+} from "./Calendar";
+
+export {
   easterOf,
   lastWeekDay,
   mothersDayOf,
