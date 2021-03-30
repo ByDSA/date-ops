@@ -1,7 +1,7 @@
 {
   "name": "date-ops",
   "version": "2.0.0",
-  "description": "Advanced and simple operations with dates",
+  "description": "Advanced and simple operations with dates and calendars",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -21,9 +21,12 @@
   },
   "keywords": [
     "date",
+    "calendar",
+    "days",
     "operations",
     "calc",
-    "retrieval"
+    "retrieval",
+    "easter"
   ],
   "author": "Daniel Sales Álvarez <danisales.es@gmail.com>",
   "license": "GPLv3",

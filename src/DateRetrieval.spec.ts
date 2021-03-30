@@ -76,6 +76,11 @@ it("Mother's Day 2022", () => {
 
   expect(actual).toBe(expected);
 } );
+it("Mother's Day: default param", () => {
+  const actual = mothersDayOf().day;
+
+  expect(actual).toBeDefined();
+} );
 
 it("Thanks Giving Day 2022", () => {
   const actual = thanksGivingDayOf(2022).day;
@@ -83,10 +88,21 @@ it("Thanks Giving Day 2022", () => {
 
   expect(actual).toBe(expected);
 } );
+it("Thanks Giving Day: default param", () => {
+  const actual = thanksGivingDayOf().day;
+
+  expect(actual).toBeDefined();
+} );
 
 it("Easter 2021", () => {
   const actual = easterOf(2021).day;
   const expected = DateTime.local(2021, Month.APRIL, 4).day;
 
   expect(actual).toBe(expected);
+} );
+
+it("Easter 2021: default param", () => {
+  const actual = easterOf().day;
+
+  expect(actual).toBeDefined();
 } );

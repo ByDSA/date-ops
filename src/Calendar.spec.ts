@@ -80,6 +80,33 @@ describe("isPublicHoliday", () => {
     expect(actual).toBeTruthy();
   } );
 
+  it("addPublicHoliday Multiple: 2021 March 30 and 31", () => {
+    const calendar = emptyCalendar;
+    const datesObj = {
+      year: 2021,
+      month: Month.MARCH,
+      days: [30, 31],
+    };
+    const dateObj = {
+      year: 2021,
+      month: Month.MARCH,
+      day: 30,
+    };
+    const dateObj2 = {
+      year: 2021,
+      month: Month.MARCH,
+      day: 31,
+    };
+
+    calendar.addPublicHoliday(datesObj);
+
+    const actual = calendar.isPublicHoliday(dateObj);
+    const actual2 = calendar.isPublicHoliday(dateObj2);
+
+    expect(actual).toBeTruthy();
+    expect(actual2).toBeTruthy();
+  } );
+
   it("addPublicHoliday: 2021 March 30 (but check 2021 May 31)", () => {
     const calendar = emptyCalendar;
     const dateObj = {

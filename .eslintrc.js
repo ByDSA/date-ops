@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     "jest/globals": true,
   },
+  extends: ["airbnb-base"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 12,
@@ -43,6 +44,10 @@ module.exports = {
         maxDepth: 1,
       },
     ],
+    "no-multiple-empty-lines": ["error", {
+      max: 1,
+      maxEOF: 0,
+    }],
     "newline-per-chained-call": [
       "error",
       {
@@ -112,6 +117,13 @@ module.exports = {
     "newline-before-return": "error",
     "nonblock-statement-body-position": ["error", "below"],
     "padded-blocks": ["error", "never"],
+
+    "no-use-before-define": ["error", {
+      functions: false,
+      classes: false,
+      variables: false,
+    }],
+
     "max-statements-per-line": [
       "error",
       {
@@ -119,27 +131,44 @@ module.exports = {
       },
     ],
     camelcase: "error",
-    "no-multiple-empty-lines": "error",
     "space-in-parens": ["error", "never", {
       exceptions: ["{}"],
     }],
     "no-var": "error",
+    "dot-location": ["error", "property"],
     "prefer-destructuring": "error",
     "prefer-exponentiation-operator": "error",
     "operator-assignment": ["error", "always"],
     "require-await": "error",
     "no-new-wrappers": "error",
     "no-multi-spaces": "error",
-    "dot-location": "error",
     "rest-spread-spacing": ["error", "never"],
     "default-case-last": "error",
     "accessor-pairs": ["error", {
       getWithoutSet: true,
     }],
+    "no-restricted-syntax": [
+      "error",
+      {
+        selector: "ForInStatement",
+        message: "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+      },
+      {
+        selector: "LabeledStatement",
+        message: "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+      },
+      {
+        selector: "WithStatement",
+        message: "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+      },
+    ],
     "no-cond-assign": ["error", "always"],
     "no-mixed-operators": "error",
     "multiline-ternary": ["error", "always-multiline"],
     "space-infix-ops": "error",
+    "no-case-declarations": "error",
+    "no-fallthrough": "error",
+    "lines-between-class-members": ["error", "always"],
     "keyword-spacing": [
       "error",
       {

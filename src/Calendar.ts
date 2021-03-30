@@ -1,10 +1,10 @@
-/* eslint-disable no-restricted-syntax */
 import { DateTime } from "luxon";
 import Month from "./Month";
 import { isWeekend } from "./Utils";
 
 type MonthDay =[Month, number];
 type YearMonthDay = {month: Month, day: number, year?: number};
+type YearMonthDayMultiple = {month: Month, days: number[], year?: number};
 type DependsOfYearFunc = (year: number)=> YearMonthDay;
 
 function currentYear() {
@@ -21,7 +21,8 @@ export default class Calendar {
     this.festivosDependsOfYear = [];
   }
 
-  addPublicHoliday( { month, day, year }: YearMonthDay): Calendar {
+  addPublicHoliday(yearMonthDay: YearMonthDay | YearMonthDayMultiple): Calendar {
+    const { year, month } = yearMonthDay;
     let yearArray = this.festivos.get(year);
 
     if (!yearArray) {
@@ -29,7 +30,13 @@ export default class Calendar {
       this.festivos.set(year, yearArray);
     }
 
-    yearArray.push([month, day]);
+    // eslint-disable-next-line no-prototype-builtins
+    if ((<any>yearMonthDay).day !== undefined)
+      yearArray.push([month, (<YearMonthDay>yearMonthDay).day]);
+    else {
+      for (const d of (<YearMonthDayMultiple>yearMonthDay).days)
+        yearArray.push([month, d]);
+    }
 
     return this;
   }

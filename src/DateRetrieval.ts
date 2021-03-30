@@ -70,16 +70,20 @@ export function nthWeekDayInMonth(
   return ret;
 }
 
-export function mothersDayOf(year: number): DateTime {
+export function mothersDayOf(year: number = currentYear()): DateTime {
   return <DateTime>nthWeekDayInMonth(year, Month.MAY, WeekDay.SUNDAY, 1);
 }
 
-export function thanksGivingDayOf(year: number): DateTime {
+export function thanksGivingDayOf(year: number = currentYear()): DateTime {
   return <DateTime>nthWeekDayInMonth(year, Month.NOVEMBER, WeekDay.THURSDAY, 4);
 }
 
-export function easterOf(year: number): DateTime {
+export function easterOf(year: number = currentYear()): DateTime {
   const { day, month } = pascua(year);
 
   return DateTime.local(year, month, day);
+}
+
+function currentYear() {
+  return DateTime.now().year;
 }
