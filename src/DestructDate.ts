@@ -18,16 +18,22 @@ export function destructJSDateUTC(date: Date = new Date()) {
   };
 }
 
-export function removeOffset(date: Date): Date {
-  const dateTime = date.getTime();
-  const offsetMillis = -date.getTimezoneOffset() * 60 * 1000;
-  const dateCopy = new Date(dateTime + offsetMillis);
-
-  return dateCopy;
-}
-
 export function destructJSDate(date: Date = new Date()) {
-  const dateCopy = removeOffset(date);
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+  const dweek = date.getDay();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
 
-  return destructJSDateUTC(dateCopy);
+  return {
+    day,
+    month,
+    year,
+    hours,
+    minutes,
+    seconds,
+    dweek,
+  };
 }
