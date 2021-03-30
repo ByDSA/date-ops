@@ -14,6 +14,7 @@ export {
 
 export {
   destructJSDate,
+  destructJSDateUTC,
 } from "./DestructDate";
 
 export {
