@@ -1,6 +1,6 @@
 {
   "name": "date-ops",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Advanced and simple operations with dates and calendars",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
