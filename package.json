@@ -1,28 +1,30 @@
 {
   "name": "date-ops",
   "version": "2.2.0",
-  "description": "Advanced and simple operations with dates and calendars",
+  "description": "Advanced and simple operations with dates and calendars.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "prebuild": "npm run build:clean && npm rebuild && npm test",
     "build": "tsc",
-    "prebuild": "npm run clean && npm rebuild && npm test",
-    "clean": "rm -rf dist",
+    "build:clean": "rm -rf dist",
     "prepublishOnly": "npm run test:coverage && npm run lint:fix && npm run build",
-    "postpublish": "npm run clean",
-    "docs:clean": "rm -rf docs/*.md",
+    "postpublish": "npm run build:clean",
     "docs": "npm run lint:fix && npm run docs:clean && typedoc",
-    "postdocs": "echo ©$(date +'%Y') $(cat package.json | grep \\\"author\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g') > docs/_Footer.md",
-    "docs:push": "cd docs && git add . && git commit -m \"Release version $(cat ../package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g')\" && git push",
+    "postdocs": ".scripts/docs-footer.sh",
+    "docs:clean": ".scripts/docs-clean.sh",
+    "docs:push": ".scripts/docs-push.sh",
     "lint:eslint": "eslint ./src/*.ts",
     "lint:fix": "eslint ./src/*.ts --fix",
     "prepare": "husky install",
     "release": "standard-version",
     "postrelease": "npm run docs",
-    "release:push": "git push && git push --tags && npm run docs:push"
+    "release:push": "git push && git push --tags && npm run docs:push",
+    "readme": "npm run readme:clean && npx readme-md-generator -p .readme/template.md -y",
+    "readme:clean": "rm -f README.md"
   },
   "keywords": [
     "date",
@@ -33,7 +35,13 @@
     "retrieval",
     "easter"
   ],
-  "author": "Daniel Sales Álvarez <danisales.es@gmail.com> (https://github.com/ByDSA)",
+  "author": {
+    "name" : "Daniel Sales Álvarez",
+    "email" : "danisales.es@gmail.com",
+    "url" : "https://danisales.es",
+    "github": "ByDSA",
+    "npmjs": "danisales"
+  },
   "license": "GPLv3",
   "repository": {
     "type": "git",

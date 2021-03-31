@@ -1,27 +1,3 @@
-# date-ops
-[![NPM version](http://img.shields.io/npm/v/date-ops.svg)](https://www.npmjs.com/package/date-ops)
-[![Generic badge](https://img.shields.io/badge/GitHub-date--ops-blue.svg?logo=github)](https://github.com/ByDSA/date-ops)
-[![CI](https://github.com/ByDSA/date-ops/actions/workflows/ci.yml/badge.svg)](https://github.com/ByDSA/date-ops/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/ByDSA/date-ops/branch/main/graph/badge.svg?token=RIJ2K00E5J)](https://codecov.io/gh/ByDSA/date-ops)
-
-## Overview
-> Advanced and simple operations with dates and calendars.
-
-This library uses [Luxon library](https://www.npmjs.com/package/luxon) to represent dates and times.
-
-Read [docs](https://github.com/ByDSA/date-ops/wiki).
-
-## Install
-npm:
-```sh
-npm install date-ops
-```
-Yarn:
-
-```sh
-yarn add date-ops
-```
-## Usage
 ### Calendar
 ```js
 import { Calendar, easterOf } from "date-ops";
@@ -100,16 +76,3 @@ const { JANUARY, FEBRUARY, MARCH,
 } = MonthJS; // JANUARY = 0, DECEMBER=11
 
 ```
-
-## Author
-
-👤 **Daniel Sales Álvarez**
-
-* Website: https://danisales.es
-* Email: danisales.es@gmail.com
-* GitHub: [@ByDSA](https://github.com/ByDSA)
-* NPM: [@danisales](https://www.npmjs.com/~danisales)
----
-Copyright © 2021 [Daniel Sales Álvarez](https://github.com/ByDSA) <danisales.es@gmail.com>.<br />
-This project is [GPLv3](https://github.com/ByDSA/date-ops/blob/master/LICENSE) licensed.
-
