@@ -27,7 +27,7 @@ yarn add date-ops
 
 ### Calendar
 ```js
-import { Calendar } from "date-ops";
+import { Calendar, easterOf } from "date-ops";
 import { DateTime } from "luxon";
 
 const calendar = new Calendar();
