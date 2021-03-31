@@ -1,3 +1,4 @@
+> Advanced and simple operations with dates and calendars.
 # date-ops
 
 [![NPM version](http://img.shields.io/npm/v/date-ops.svg)](https://www.npmjs.com/package/date-ops)
@@ -5,23 +6,24 @@
 [![CI](https://github.com/ByDSA/date-ops/actions/workflows/ci.yml/badge.svg)](https://github.com/ByDSA/date-ops/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ByDSA/date-ops/branch/main/graph/badge.svg?token=RIJ2K00E5J)](https://codecov.io/gh/ByDSA/date-ops)
 
-Advanced and simple operations with dates and calendars.
-
 Read [docs](https://github.com/ByDSA/date-ops/wiki).
 
 This library uses [Luxon library](https://www.npmjs.com/package/luxon) to represent dates and times.
 
 ---
 
-## How to use
-
-### Basics
-
-Install (npm):
-
+## Install
+npm:
 ```bash
 npm install date-ops
 ```
+Yarn:
+
+```bash
+yarn add date-ops
+```
+
+## How to use
 
 ### Calendar
 ```js
@@ -51,13 +53,13 @@ const retrieval2 = nextWeekDay(date, WeekDay.TUESDAY); // 2021 04 06
 const retrieval3 = lastWeekDay(date, WeekDay.SUNDAY); // 2021 03 28
 const retrieval4 = lastWeekDay(date, WeekDay.TUESDAY); // 2021 03 23
 const retrieval5 = nthWeekDayInMonth(
-  2021, Month.MAY, WeekDay.SUNDAY, 2,
+  2021, Month.MAY, WeekDay.SUNDAY, 2
 ); // 2nd Sunday of May, 2021: 2021 05 09
 const retrieval6 = nthWeekDayInMonth(
-  2021, Month.MAY, WeekDay.SUNDAY, 6,
+  2021, Month.MAY, WeekDay.SUNDAY, 6
 ); // undefined
-const retrieval7 = nthWeekDayInMonth(
-  2021, Month.MAY, WeekDay.SUNDAY, 1, true,
+const retrieval7 = nthWeekDayInMonthBack(
+  2021, Month.MAY, WeekDay.SUNDAY, 1
 ); // Last Sunday of May, 2021: 2021 05 30
 const retrieval8 = mothersDayOf(2021); // (Spain): 2021 05 02
 const retrieval9 = easterOf(2021); // 2021 04 04

@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { easterOf, lastWeekDay, mothersDayOf, nextWeekDay, nthWeekDayInMonth, thanksGivingDayOf } from "./DateRetrieval";
+import { easterOf, lastWeekDay, mothersDayOf, nextWeekDay, nthWeekDayInMonth, nthWeekDayInMonthBack, thanksGivingDayOf } from "./DateRetrieval";
 import Month from "./Month";
 import WeekDay from "./WeekDay";
 
@@ -61,12 +61,33 @@ describe("nthWeekDayInMonth", () => {
 
     expect(actual).toBe(expected);
   } );
+} );
 
+describe("nthWeekDayInMonthBack", () => {
   it("Last Thursday of November 2021", () => {
-    const actual = nthWeekDayInMonth(2021, Month.NOVEMBER, WeekDay.THURSDAY, 1, true)?.day;
+    const actual = nthWeekDayInMonthBack(2021, Month.NOVEMBER, WeekDay.THURSDAY, 1)?.day;
     const expected = DateTime.local(2021, Month.NOVEMBER, 25).day;
 
     expect(actual).toBe(expected);
+  } );
+
+  it("Count at begin: Last Wednesday of March 2021", () => {
+    const actual = nthWeekDayInMonthBack(2021, Month.MARCH, WeekDay.WEDNESDAY, 1)?.day;
+    const expected = DateTime.local(2021, Month.MARCH, 31).day;
+
+    expect(actual).toBe(expected);
+  } );
+
+  it("Impossible: 7th Back Sunday of May 2021", () => {
+    const actual = nthWeekDayInMonthBack(2021, Month.MAY, WeekDay.SUNDAY, 7)?.day;
+
+    expect(actual).toBeUndefined();
+  } );
+
+  it("Impossible: invalid date", () => {
+    const actual = nthWeekDayInMonthBack(2021, 13, WeekDay.SUNDAY, 7)?.day;
+
+    expect(actual).toBeUndefined();
   } );
 } );
 

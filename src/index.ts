@@ -13,6 +13,7 @@ export {
   mothersDayOf,
   nextWeekDay,
   nthWeekDayInMonth,
+  nthWeekDayInMonthBack,
   thanksGivingDayOf,
 } from "./DateRetrieval";
 

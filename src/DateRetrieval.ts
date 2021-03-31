@@ -32,17 +32,13 @@ export function nthWeekDayInMonth(
   month: Month,
   weekDay: WeekDay,
   nth: number,
-  reverse = false,
 ): DateTime|undefined {
   let ret = DateTime.local(year, month);
 
   if (!ret.isValid)
     return undefined;
 
-  if (reverse)
-    ret = ret.endOf("month");
-  else
-    ret = ret.startOf("month");
+  ret = ret.startOf("month");
 
   let count = 0;
 
@@ -50,15 +46,42 @@ export function nthWeekDayInMonth(
     count++;
 
   while (count !== nth) {
-    if (reverse) {
-      ret = ret.minus( {
-        days: 1,
-      } );
-    } else {
-      ret = ret.plus( {
-        days: 1,
-      } );
-    }
+    ret = ret.plus( {
+      days: 1,
+    } );
+
+    if (ret.month !== month)
+      return undefined;
+
+    if (ret.weekday === weekDay)
+      count++;
+  }
+
+  return ret;
+}
+
+export function nthWeekDayInMonthBack(
+  year: number,
+  month: Month,
+  weekDay: WeekDay,
+  nth: number,
+): DateTime|undefined {
+  let ret = DateTime.local(year, month);
+
+  if (!ret.isValid)
+    return undefined;
+
+  ret = ret.endOf("month");
+
+  let count = 0;
+
+  if (ret.weekday === weekDay)
+    count++;
+
+  while (count !== nth) {
+    ret = ret.minus( {
+      days: 1,
+    } );
 
     if (ret.month !== month)
       return undefined;

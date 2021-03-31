@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { Calendar, daysBetween, destructJSDate, destructJSDateUTC, easterOf, getTimestamp, getTimestampNow, isWeekend, lastWeekDay, millisBetween, Month, MonthJS, mothersDayOf, nextWeekDay, nthWeekDayInMonth, thanksGivingDayOf, TimeUnit, WeekDay, WeekDayJS } from "./index";
+import { Calendar, daysBetween, destructJSDate, destructJSDateUTC, easterOf, getTimestamp, getTimestampNow, isWeekend, lastWeekDay, millisBetween, Month, MonthJS, mothersDayOf, nextWeekDay, nthWeekDayInMonth, nthWeekDayInMonthBack, thanksGivingDayOf, TimeUnit, WeekDay, WeekDayJS } from "./index";
 
 it("daysBetween", () => {
   const from = DateTime.utc(1970, 1, 1);
@@ -114,8 +114,8 @@ it("date retrieval", () => {
   const retrieval6 = nthWeekDayInMonth(
     2021, Month.MAY, WeekDay.SUNDAY, 6,
   ); // undefined
-  const retrieval7 = nthWeekDayInMonth(
-    2021, Month.MAY, WeekDay.SUNDAY, 1, true,
+  const retrieval7 = nthWeekDayInMonthBack(
+    2021, Month.MAY, WeekDay.SUNDAY, 1,
   ); // Last Sunday of May, 2021: 2021 05 30
   const retrieval8 = mothersDayOf(2021); // (Spain): 2021 05 02
   const retrieval9 = easterOf(2021); // 2021 04 04
