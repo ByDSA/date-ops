@@ -16,11 +16,13 @@
     "docs:clean": "rm -rf docs/*.md",
     "docs": "npm run lint:fix && npm run docs:clean && typedoc",
     "postdocs": "echo ©$(date +'%Y') $(cat package.json | grep \\\"author\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g') > docs/_Footer.md",
+    "docs:push": "cd docs && git add . && git commit -m \"Release version $(cat ../package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g')\" && git push",
     "lint:eslint": "eslint ./src/*.ts",
     "lint:fix": "eslint ./src/*.ts --fix",
     "prepare": "husky install",
     "release": "standard-version",
-    "postrelease": "npm run docs && cd docs && git add . && git commit -m \"Release version $(cat ../package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g')\" && git push"
+    "postrelease": "npm run docs",
+    "release:push": "git push && git push --tags && npm run docs:push"
   },
   "keywords": [
     "date",
