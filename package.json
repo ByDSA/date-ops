@@ -20,7 +20,7 @@
     "lint:fix": "eslint ./src/*.ts --fix",
     "prepare": "husky install",
     "release": "standard-version",
-    "postrelease": "npm run docs && cd docs && git add . && git commit -m \"Release version $(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g')\" && git push"
+    "postrelease": "npm run docs && cd docs && git add . && git commit -m \"Release version $(cat ../package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g')\" && git push"
   },
   "keywords": [
     "date",
